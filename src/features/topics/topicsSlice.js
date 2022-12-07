@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const topicsSlice = createSlice({
+const topicsSlice = createSlice({
   name: "topics",
   initialState: {
     topics: {}
@@ -23,6 +23,6 @@ export const topicsSlice = createSlice({
 // export selector that select the topics object nested in initial state
 export const selectTopics = (state) => state.topics.topics;
 // export the action creators and reducer that the slice generates
-export const addTopic = topicsSlice.actions;
+export const { addTopic } = topicsSlice.actions;
 // imported in the store as 'topicsReducer'
 export default topicsSlice.reducer;
