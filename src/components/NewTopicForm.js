@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
+// useNavigate introduced in v6 and replaces the useHistory hook
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
 import { ALL_ICONS } from "../data/icons";
+// import action creator from topicsSlice
+import { addTopic } from "../features/topics/topicsSlice";
+import { useDispatch } from "react-redux";
 
 export default function NewTopicForm() {
   const [name, setName] = useState("");
   const [icon, setIcon] = useState("");
   const navigate = useNavigate();
-  const uniqueId = uuidv4();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +20,14 @@ export default function NewTopicForm() {
       return;
     }
 
-    // dispatch your add topic action here
+    // dispatch add topic action
+    dispatch(
+      addTopic({
+        id: uuidv4(),
+        name,
+        icon,
+      })
+    );
     navigate(ROUTES.topicsRoute());
   };
 
