@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
+// import topics selector
+import { selectTopics } from "../features/topics/topicsSlice";
+// import thunk action creator from quizzesSlice
+import { addQuizForTopicId } from "../features/quizzes/quizzesSlice";
 
 export default function NewQuizForm() {
   const [name, setName] = useState("");
   const [cards, setCards] = useState([]);
   const [topicId, setTopicId] = useState("");
   const navigate = useNavigate();
-  const topics = {};
-  const uniqueId = uuidv4();
+  const topics = useSelector(selectTopics);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +27,18 @@ export default function NewQuizForm() {
     // create the new cards here and add each card's id to cardIds
     // create the new quiz here
 
+    // generate an id
+    const quizId = uuidv4();
+
+    // dispatch the add quiz for topic id action
+    dispatch(
+      addQuizForTopicId({
+        id: quizId,
+        name,
+        topicId,
+        cardIds: [],
+      })
+    );
     navigate(ROUTES.quizzesRoute());
   };
 
