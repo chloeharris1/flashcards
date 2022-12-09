@@ -10,9 +10,9 @@ export default function Quizzes() {
     <section className="center">
       <h1>Quizzes</h1>
       <ul className="quizzes-list">
-        {Object.values(quizzes).map((quiz) => (
-          <Link key={quiz.id} to={ROUTES.quizRoute(quiz.id)}>
-            <li className="quiz">{quiz.name}</li>
+        {Object.values(quizzes).map(({ id, name }) => (
+          <Link key={id} to={ROUTES.quizRoute(id)}>
+            <li className="quiz">{name}</li>
           </Link>
         ))}
       </ul>

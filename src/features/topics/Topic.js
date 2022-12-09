@@ -1,12 +1,16 @@
 import { Link, useParams } from "react-router-dom";
 import ROUTES from "../../app/routes";
-import { selectTopics } from "./topicsSlice";
+// import useSelector to use with selectTopics
 import { useSelector } from "react-redux";
+// import selector defined in the topicsSlice
+import { selectTopics } from "./topicsSlice";
+import { selectQuizzes } from "../quizzes/quizzesSlice";
 
 export default function Topic() {
   // call to the selector to select all the topics in state
   const topics = useSelector(selectTopics);
-  const quizzes = {}; // replace this with a call to your selector to select all the quizzes in state
+  // call to your selector to select all the quizzes in state
+  const quizzes = useSelector(selectQuizzes);
   let { topicId } = useParams();
   const topic = topics[topicId];
   const quizzesForTopic = topic.quizIds.map((quizId) => quizzes[quizId]);
