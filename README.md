@@ -16,6 +16,10 @@ In this project, I used Redux and Redux Toolkit to manage the complex state of a
 
 ## Snapshot
 
+![screenshot](./public/Screenshot_Topics.png)
+
+![screenshot](./public/Screenshot_Quiz.png)
+
 ## Link
 
 ## Credits
