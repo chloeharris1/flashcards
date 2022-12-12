@@ -227,12 +227,7 @@ li:not(:last-child) {
 }
 
 .quiz>a {
-    color: #f2f3f4;
     text-decoration: none;
-}
-
-.quiz>a:hover {
-    color: #252628;
 }
 
 .quiz:hover {
