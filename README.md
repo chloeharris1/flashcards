@@ -22,6 +22,14 @@ In this project, I used Redux and Redux Toolkit to manage the complex state of a
 
 ## Link
 
+[Flashcards](https://redux-flashcards.netlify.app/)
+
+## Usage
+
+1. Create Topics
+2. Create Quizzes
+3. Select individual quiz and flip the cards over
+
 ## Credits
 
 Favicon:
